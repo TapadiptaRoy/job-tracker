@@ -49,7 +49,8 @@ export const register = async (req: Request, res: Response) => {
       user: { id: user.id, name: user.name, email: user.email }
     })
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' })
+    console.error('REGISTER ERROR:', error)
+    res.status(500).json({ message: 'Internal server error', error: String(error) })
   }
 }
 
@@ -90,7 +91,8 @@ export const login = async (req: Request, res: Response) => {
       user: { id: user.id, name: user.name, email: user.email }
     })
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' })
+    console.error('LOGIN ERROR:', error)
+    res.status(500).json({ message: 'Internal server error', error: String(error) })
   }
 }
 
@@ -107,6 +109,7 @@ export const logout = async (req: Request, res: Response) => {
 
     res.json({ message: 'Logged out successfully' })
   } catch (error) {
+    console.error('LOGOUT ERROR:', error)
     res.status(500).json({ message: 'Internal server error' })
   }
 }
@@ -130,6 +133,7 @@ export const refresh = async (req: Request, res: Response) => {
 
     res.json({ accessToken })
   } catch (error) {
+    console.error('REFRESH ERROR:', error)
     res.status(401).json({ message: 'Invalid refresh token' })
   }
 }
