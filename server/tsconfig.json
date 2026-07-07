@@ -2,15 +2,16 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "strict": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
     "skipLibCheck": true,
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "types": ["node"]
   },
-  "include": ["src/**/*", "prisma.config.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
