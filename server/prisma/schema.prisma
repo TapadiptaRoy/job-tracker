@@ -16,20 +16,21 @@ model Activity {
 }
 
 model Application {
-  id          String     @id @default(cuid())
-  company     String
-  role        String
-  status      Status     @default(APPLIED)
-  appliedDate DateTime   @default(now())
-  notes       String?
-  jobUrl      String?
-  salary      String?
-  location    String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  userId      String
-  activities  Activity[]
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String      @id @default(cuid())
+  company      String
+  role         String
+  status       Status      @default(APPLIED)
+  appliedDate  DateTime    @default(now())
+  followUpDate DateTime?
+  notes        String?
+  jobUrl       String?
+  salary       String?
+  location     String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  userId       String
+  activities   Activity[]
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model RefreshToken {
@@ -55,6 +56,7 @@ model User {
 enum Status {
   APPLIED
   INTERVIEW
+  SELECTED
   OFFER
   REJECTED
   GHOSTED

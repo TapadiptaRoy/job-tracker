@@ -1,4 +1,4 @@
-export type Status = 'APPLIED' | 'INTERVIEW' | 'OFFER' | 'REJECTED' | 'GHOSTED'
+export type Status = 'APPLIED' | 'INTERVIEW' | 'OFFER' | 'REJECTED' | 'GHOSTED' | 'SELECTED'
 
 export interface User {
   id: string
@@ -20,6 +20,7 @@ export interface Application {
   role: string
   status: Status
   appliedDate: string
+  followUpDate?: string    // ← add this line
   notes?: string
   jobUrl?: string
   salary?: string
